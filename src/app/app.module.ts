@@ -13,7 +13,8 @@ import { OhFourComponent } from './oh-four/oh-four.component';
 import { OneFeatureComponent } from './one-feature/one-feature.component';
 import { DetailFeatureComponent } from './detail-feature/detail-feature.component';
 import { FeaturesService } from './services/features.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -27,12 +28,14 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     OhFourComponent,
     OneFeatureComponent,
-    DetailFeatureComponent
+    DetailFeatureComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [

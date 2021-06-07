@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { FeaturesService } from 'src/app/services/features.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { FeaturesService } from 'src/app/services/features.service';
 export class NavBarComponent implements OnInit {
 
   constructor(
-    private featuresService: FeaturesService
+    private featuresService: FeaturesService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -17,6 +19,10 @@ export class NavBarComponent implements OnInit {
 
   onClickAddFeature() {
     this.featuresService.addFeature();
+  }
+
+  onClickLogout() {
+    this.authService.logout();
   }
 
 }
