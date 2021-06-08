@@ -11,8 +11,8 @@ import { OneFeatureComponent } from './one-feature/one-feature.component';
 import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, pathMatch: 'full'},
-  { path: 'signup', component: SignupComponent, pathMatch: 'full'},
+  { path: 'login', component: LoginComponent},
+  { path: 'signup', component: SignupComponent},
   { path: '', canActivate : [AuthGuardGuard] ,component: LayoutComponent, children : [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: 'home',  component: HomeComponent},  
