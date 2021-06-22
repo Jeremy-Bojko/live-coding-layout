@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { AddFeatureComponent } from './add-feature/add-feature.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     OhFourComponent,
     OneFeatureComponent,
     DetailFeatureComponent,
-    SignupComponent
+    SignupComponent,
+    AddFeatureComponent
   ],
   imports: [
     BrowserModule,

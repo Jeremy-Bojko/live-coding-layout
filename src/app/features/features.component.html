@@ -1,7 +1,7 @@
 <ul>
   <li *ngFor="let feature of dataFeature">
-    <div>Name : {{ feature.name }} </div>
+    <div>Name : {{ feature.title }} </div>
     <p>Description : {{ feature.description }} </p>
-    <a [routerLink]="[feature.id]">Details</a>
+    <a [routerLink]="[feature._id]">Details</a>
   </li>
 </ul>
