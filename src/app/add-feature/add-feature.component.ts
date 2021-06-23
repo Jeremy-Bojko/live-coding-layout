@@ -19,6 +19,7 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
   */
   modalManipulation? : Modal;
   @ViewChild('modalAddFeature') modalAddFeature? : ElementRef<any>;
+  subjectModalSub?: Subscription;
 
   constructor(
     private featuresService : FeaturesService,
@@ -28,7 +29,7 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.featuresService.showModalAddfeatureSubject.subscribe(
+    this.subjectModalSub = this.featuresService.showModalAddfeatureSubject.subscribe(
       (boolModal: boolean) => {
         boolModal && this.showModal()
       }
@@ -79,8 +80,7 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy():void {
-    console.log('Destroy');
-
+    this.subjectModalSub?.unsubscribe();
   }
 
 }
