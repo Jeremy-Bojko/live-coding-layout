@@ -26,6 +26,7 @@ export class FeaturesService {
   ]
 
   featureSubject = new Subject<any[]>();
+  showModalAddfeatureSubject = new Subject<boolean>();
 
   API_URL = 'https://test-node-jb.herokuapp.com/api';
   stuffObject$ = new Subject<Feature[]>();
@@ -57,10 +58,12 @@ export class FeaturesService {
         console.error(err)
       },
       () => console.log('fini')
-      
-      
     )
   }
 
-
+  postFeature(newFeature: Feature) {
+    const userId = localStorage.getItem('USER_ID');
+    newFeature.userId = userId;
+    return this.httpClient.post(`${this.API_URL}/stuff`, newFeature)
+  }
 }

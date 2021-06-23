@@ -21,6 +21,10 @@ export class NavBarComponent implements OnInit {
     this.featuresService.addFeature();
   }
 
+  onClickShowModal() {
+    this.featuresService.showModalAddfeatureSubject.next(true);
+  }
+
   onClickLogout() {
     this.authService.logout();
   }
