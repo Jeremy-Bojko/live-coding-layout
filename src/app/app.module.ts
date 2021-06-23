@@ -18,6 +18,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AddFeatureComponent } from './add-feature/add-feature.component';
+import { ModalAlertComponent } from './layout/modal-alert/modal-alert.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AddFeatureComponent } from './add-feature/add-feature.component';
     OneFeatureComponent,
     DetailFeatureComponent,
     SignupComponent,
-    AddFeatureComponent
+    AddFeatureComponent,
+    ModalAlertComponent
   ],
   imports: [
     BrowserModule,

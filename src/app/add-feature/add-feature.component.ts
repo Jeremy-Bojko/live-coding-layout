@@ -5,6 +5,7 @@ import { Feature } from '../models/feature.model';
 import { FeaturesService } from '../services/features.service';
 import { Modal } from 'bootstrap';
 import { Router } from '@angular/router';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-add-feature',
@@ -23,6 +24,7 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
 
   constructor(
     private featuresService : FeaturesService,
+    private modalService : ModalService,
     private router : Router,
   ) {
     this.addFeatureForm = new FormGroup({});
@@ -34,7 +36,6 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
         boolModal && this.showModal()
       }
     )
-
    this.initForm();
   }
 
@@ -44,9 +45,9 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
   }
 
   showModal(): void {
-
     this.modalManipulation?.show();
   }
+
   closeModal() {
     this.modalManipulation?.hide();
   }
@@ -56,8 +57,8 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
       newTitle : new FormControl('', [Validators.required]),
       newDescription : new FormControl('', [Validators.required]),
       newPrice : new FormControl('', [Validators.required, Validators.min(0)]),
-      
     })
+    this.modalService.alertModalSub.next({title : 'Réussite ! ', content : 'Nouvelle feature créée !'});
   }
 
   onSubmit() {
@@ -75,6 +76,7 @@ export class AddFeatureComponent implements OnInit, OnDestroy {
         console.log('New Feature post');
         this.closeModal();
         this.router.navigate(['/features']);
+        this.modalService.alertModalSub.next({title : 'Réussite ! ', content : 'Nouvelle feature créée !'});
       }
     )
   }
