@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Feature } from '../models/feature.model';
 import { FeaturesService } from '../services/features.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FeaturesService } from '../services/features.service';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent implements OnInit, OnDestroy {
-  dataFeature? : any;
+  dataFeature? : Feature[];
   featureSubscription? : Subscription;
 
   constructor(
@@ -16,14 +17,21 @@ export class FeaturesComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.dataFeature = this.featuresService.features.slice();
-    console.log(this.dataFeature);  
+    // this.dataFeature = this.featuresService.features.slice();
+    // console.log(this.dataFeature);
 
-    this.featureSubscription = this.featuresService.featureSubject.subscribe(
-      (features: any[]) => {
-        this.dataFeature = features;
+    // this.featureSubscription = this.featuresService.featureSubject.subscribe(
+    //   (features: any[]) => {
+    //     this.dataFeature = features;
+    //   }
+    // )
+
+    this.featureSubscription  = this.featuresService.stuffObject$.subscribe(
+      (listFeature: Feature[] ) => { 
+        this.dataFeature = [...listFeature];
       }
     )
+    this.featuresService.getFeature()
   }
 
   ngOnDestroy() {

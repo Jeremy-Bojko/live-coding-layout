@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Feature } from '../models/feature.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,12 @@ export class FeaturesService {
   ]
 
   featureSubject = new Subject<any[]>();
+  showModalAddfeatureSubject = new Subject<boolean>();
 
-  constructor() { }
+  API_URL = 'https://test-node-jb.herokuapp.com/api';
+  stuffObject$ = new Subject<Feature[]>();
+
+  constructor(private httpClient: HttpClient) { }
 
   addFeature() {
     const newFeature = {
@@ -43,5 +49,21 @@ export class FeaturesService {
     console.log('Emit Data');
   }
 
+  getFeature() {
+    this.httpClient.get(`${this.API_URL}/stuff`).subscribe(
+      (listStuff: any) => {
+        this.stuffObject$.next(listStuff);
+      },
+      err => {
+        console.error(err)
+      },
+      () => console.log('fini')
+    )
+  }
 
+  postFeature(newFeature: Feature) {
+    const userId = localStorage.getItem('USER_ID');
+    newFeature.userId = userId;
+    return this.httpClient.post(`${this.API_URL}/stuff`, newFeature)
+  }
 }

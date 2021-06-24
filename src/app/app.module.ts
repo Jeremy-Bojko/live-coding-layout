@@ -13,8 +13,14 @@ import { OhFourComponent } from './oh-four/oh-four.component';
 import { OneFeatureComponent } from './one-feature/one-feature.component';
 import { DetailFeatureComponent } from './detail-feature/detail-feature.component';
 import { FeaturesService } from './services/features.service';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { AddFeatureComponent } from './add-feature/add-feature.component';
+import { ModalAlertComponent } from './layout/modal-alert/modal-alert.component';
+import { ListFeatureComponent } from './features/list-feature/list-feature.component';
+import { CardFeatureComponent } from './features/list-feature/card-feature/card-feature.component';
 
 @NgModule({
   declarations: [
@@ -27,16 +33,23 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     OhFourComponent,
     OneFeatureComponent,
-    DetailFeatureComponent
+    DetailFeatureComponent,
+    SignupComponent,
+    AddFeatureComponent,
+    ModalAlertComponent,
+    ListFeatureComponent,
+    CardFeatureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [
-    FeaturesService
+    FeaturesService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
