@@ -19,6 +19,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AddFeatureComponent } from './add-feature/add-feature.component';
 import { ModalAlertComponent } from './layout/modal-alert/modal-alert.component';
+import { ListFeatureComponent } from './features/list-feature/list-feature.component';
+import { CardFeatureComponent } from './features/list-feature/card-feature/card-feature.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ModalAlertComponent } from './layout/modal-alert/modal-alert.component'
     DetailFeatureComponent,
     SignupComponent,
     AddFeatureComponent,
-    ModalAlertComponent
+    ModalAlertComponent,
+    ListFeatureComponent,
+    CardFeatureComponent
   ],
   imports: [
     BrowserModule,
