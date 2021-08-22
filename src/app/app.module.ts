@@ -21,6 +21,7 @@ import { AddFeatureComponent } from './add-feature/add-feature.component';
 import { ModalAlertComponent } from './layout/modal-alert/modal-alert.component';
 import { ListFeatureComponent } from './features/list-feature/list-feature.component';
 import { CardFeatureComponent } from './features/list-feature/card-feature/card-feature.component';
+import { ModalConfirmComponent } from './layout/modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CardFeatureComponent } from './features/list-feature/card-feature/card-
     AddFeatureComponent,
     ModalAlertComponent,
     ListFeatureComponent,
-    CardFeatureComponent
+    CardFeatureComponent,
+    ModalConfirmComponent
   ],
   imports: [
     BrowserModule,

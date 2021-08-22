@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 })
 export class ModalService {
   alertModalSub = new Subject<{ title : string , content : string}>();
+  confirmModalSub = new Subject<{ title : string , content : string}>();
+  confirmModalSubResponse = new Subject<boolean>();
   constructor() { }
 
 }
