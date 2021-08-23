@@ -32,6 +32,10 @@ export class NavBarComponent implements OnInit {
     this.modalService.confirmModalSub.next({ title : 'Ok Coco', content : 'Cliquez sur Oui ou non svp !'})
     this.modalSub = this.modalService.confirmModalSubResponse.subscribe(
       (response : boolean) => {
+        if(response) {
+          // Si oui j'envoie mon delete 
+        }
+        // si non je ne fais rien 
         this.modalService.alertModalSub.next({ title : 'Modal info', content : `La reponse à la précédente Modal était ${response ? 'Oui': 'Non'}`})
         this.modalSub?.unsubscribe();
       }

@@ -38,9 +38,6 @@ export class ModalConfirmComponent implements OnInit {
 
   showModal(): void {
     this.modalManipulation?.show();
-    setTimeout(() => {
-      this.closeModal();
-    }, 3000);
   }
   
   closeModal() {
